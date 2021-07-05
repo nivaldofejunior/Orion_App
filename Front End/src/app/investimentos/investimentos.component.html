@@ -1,0 +1,57 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-x1">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+          <button type="button" class="btn-close" 
+          data-bs-dismiss="modal" aria-label="Close"
+          (click)="fecharModal()"></button>
+        </div>
+        <div class="modal-body">
+           <app-simular-investimento [projeto]="projeto" *ngIf="SimularProjComp"></app-simular-investimento>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Projeto ID</th>
+            <th>Projeto Nome</th>
+            <th>Dt Inicial</th>
+            <th>Dt Final</th>
+            <th>Valor do Projeto</th>
+            <th>Risco</th>
+            <th>Participantes</th>
+            <th>Opções</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let projeto of listaProjetos ">
+            <td>{{projeto.ProjetoId}}</td>
+            <td>{{projeto.ProjetoNome}}</td>
+            <td>{{projeto.ProjetoDataInicial | date:'dd/MM/yyyy' }}</td>
+            <td>{{projeto.ProjetoDataFinal | date:'dd/MM/yyyy'}}</td>
+            <td>{{projeto.ProjetoValor}}</td>
+            <td>{{projeto.ProjetoRisco}}</td> 
+            <td>{{projeto.ProjetoParticipantes}}</td>
+
+            <td>
+                <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#exampleModal"
+                data-backdrop="static" data-keyboard="false"
+                (click)="simularInvestimento(projeto)">
+                    Simular
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
+                        <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+                        <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z"/>
+                      </svg>
+                </button>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+  <div class =col-sm-10>
+        <label>Valor Atual do Projeto</label>
+        <p>
+        <span readonly>{{projeto.ProjetoValor}}</span>
+        </p>    
+    </div>   
+    <div class="col-sm-10">
+        <label >Valor a ser investido</label>
+        <input type="number" class="form-control" [(ngModel)]="ValorInvestido"
+        placeholder="Valor">
+    </div>
+    <div class="col-sm-10">
+        <label>Risco do Projeto</label>
+        <p>
+            <span>{{projeto.ProjetoRisco}}</span>
+        </p>
+    </div>
+    <div class="col-sm-10">
+        <label>Valor Final</label>
+        <p><input readonly value={{valorfinal}}></p>
+    </div>
+
+<br>
+
+<button  class="btn btn-primary" (click)="simularValor(ProjetoValor)">
+    Simular
+</button>
+
+<button style="margin-left: 10px;" class="btn btn-primary" (click)="investir()">
+    Investir
+</button>
